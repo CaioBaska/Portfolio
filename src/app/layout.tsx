@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google'
 import "./globals.css";
+import { ThemeProvider } from "../app/components/theme_provider"
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -20,7 +21,14 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${roboto.variable}`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
